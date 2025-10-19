@@ -4,9 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+# Add your regular dependencies here if any, for example:
+# pandas = "*"
+# numpy = "*"
 
 [dev-packages]
 pytest = "*"
 
 [requires]
-python_version = "3.14"
+python_version = "3.11"
