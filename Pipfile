@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-# Add your runtime dependencies here if needed, e.g.
+# Example dependencies
 # pandas = "*"
 # numpy = "*"
 
