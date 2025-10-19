@@ -4,9 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-# Example dependencies
-# pandas = "*"
-# numpy = "*"
+pyspark = "*"
 
 [dev-packages]
 pytest = "*"
