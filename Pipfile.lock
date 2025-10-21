@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5d631cfad0656ee8d56f4b9862e27928c1f74913600ee93d3aa9f740bff2ac10"
+            "sha256": "cc3ce35bc8bf648eec33fcdc643de59f43445301370c1914b955fe8e6cd6b269"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -15,7 +15,23 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "py4j": {
+            "hashes": [
+                "sha256:c7c26e4158defb37b0bb124933163641a2ff6e3a3913f7811b0ddbe07ed61533",
+                "sha256:f694cad19efa5bd1dee4f3e5270eb406613c974394035e5bfc4ec1aba870b879"
+            ],
+            "version": "==0.10.9.9"
+        },
+        "pyspark": {
+            "hashes": [
+                "sha256:9d1f22d994f60369228397e3479003ffe2dd736ba79165003246ff7bd48e2c73"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9'",
+            "version": "==4.0.1"
+        }
+    },
     "develop": {
         "colorama": {
             "hashes": [
