@@ -19,6 +19,7 @@ pipeline {
                 }
             }
         }
+
         stage('Install Dependencies') {
             steps {
                 script {
@@ -27,6 +28,7 @@ pipeline {
                 }
             }
         }
+
         stage('Test') {
             steps {
                 script {
@@ -39,16 +41,33 @@ pipeline {
                 }
             }
         }
+
         stage('Package') {
             steps {
-                // Create the zip file but exclude the venv directory
-                sh 'zip -r RetailAnalysis.zip . -x "retail_pipeline_venv/*"'
+                script {
+                    // Ensure zip is installed before creating the archive
+                    sh '''
+                    if ! command -v zip &> /dev/null
+                    then
+                        echo "zip not found — installing..."
+                        sudo apt-get update -y && sudo apt-get install -y zip
+                    else
+                        echo "zip is already installed."
+                    fi
+
+                    # Now create the zip file, excluding the venv directory
+                    zip -r RetailAnalysis.zip . -x "retail_pipeline_venv/*"
+                    '''
+                }
             }
         }
+
         stage('Deploy') {
             steps {
-                // Add deployment steps here (e.g., deploy to a server or cloud)
-                sh 'sshpass -p $LABS_PSW scp -o StrictHostKeyChecking=no -r RetailAnalysis.zip $LABS_USR@g02.itversity.com:/home/itv020645/RetailAnalysis'
+                script {
+                    // Add deployment steps here (e.g., deploy to a server or cloud)
+                    sh 'sshpass -p $LABS_PSW scp -o StrictHostKeyChecking=no -r RetailAnalysis.zip $LABS_USR@g02.itversity.com:/home/itv020645/RetailAnalysis'
+                }
             }
         }
     }
